@@ -1,0 +1,14 @@
+minikube 
+
+gle Language 10.0.19043 Build 19043
+* Automatically selected the docker driver
+* Starting control plane node minikube in cluster minikube
+* Pulling base image ...
+* Downloading Kubernetes v1.21.2 preload ...
+    > preloaded-images-k8s-v11-v1...: 502.14 MiB / 502.14 MiB  100.00% 4.35 MiB
+    > gcr.io/k8s-minikube/kicbase...: 361.08 MiB / 361.09 MiB  100.00% 2.36 MiB
+
+
+kubectl edit pod <pod_name>
+kubectl replace -f <yaml_file>
+kubectl scale --replicas=6 <label> <name_of_pod>
