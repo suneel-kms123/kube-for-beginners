@@ -12,3 +12,131 @@ gle Language 10.0.19043 Build 19043
 kubectl edit pod <pod_name>
 kubectl replace -f <yaml_file>
 kubectl scale --replicas=6 <label> <name_of_pod>
+
+ kubectl get pods
+    2  kubectl get replicaset
+    3  kubectl describe replicaset
+    4  kubectl get replicaset
+    5  kubectl logs replicaset
+    6  kubectl logs new-replica-set
+    7  kubectl get replicaset
+    8  kubectl get pods
+    9  kubectl delete pod new-replica-set-6lvgk
+   10  kubectl get pods
+   11  kubectl describe pod new-replica-set-g46rd
+   12  kubectl scale replicas=3 busybox-pod new-replica-set-g46rd
+   13  kubectl scale --replicas=3 busybox-pod new-replica-set-g46rd
+   14  kubectl scale --replicas=3
+   15  kubectl scale --replicas=3 new-replica-set-g46rd
+   16  kubectl scale --replicas=3 new-replica-set new-replica-set-g46rd
+   17  kubectl scale --replicas=3 new-replica-set-g46rd
+   18  kubectl delete pod new-replica-set-6lvgk
+   19  kubectl get pods
+   20  kubectl delete pod new-replica-set-g46rd
+   21  ls
+   22  vi replicaset-definition-1.yaml 
+   23  kubectl create -f replicaset-definition-1.yaml 
+   24  vi replicaset-definition-1.yaml 
+   25  kubectl create -f replicaset-definition-1.yaml 
+   26  kubectl get pods
+   27  vi replicaset-definition-1.yaml 
+   28  kubectl get pods
+   29  vi replicaset-definition-2.yaml 
+   30  kubectl create -f replicaset-definition-2.yaml 
+   31  kubectl get pods
+   32  vi replicaset-definition-2.yaml 
+   33  kubectl get pods
+   34  kubectl get replicaset
+   35  kubectl delete replicaset replicaset-1 replicaset-2
+   36  kubectl get replicaset
+   37  kubectl get pods
+   38  ls
+   39  kubectl get replicaset
+   40  vi sample.yaml 
+   41  kubectl get pods
+   42  kubectl edit pod new-replica-set-4tgcg
+   43  kubectl get pods
+   44  kubectl edit pod new-replica-set-g782
+   45  kubectl edit pod new-replica-set-g78q2
+   46  kubectl edit pod new-replica-set-m6t7c
+   47  kubectl edit replicaset new-replica-set
+   48  kubectl get pods
+   49  kubectl edit pod new-replica-set-mgmgz
+   50  kubectl get pods
+   51  kubectl delete pod new-replica-set-4tgcg
+   52  kubectl get pods
+   53  kubectl scale --replicas=4
+   54  kubectl scale --replicas=4 pods new-replica-set-4ncvt
+   55  kubectl scale --replicas=4 new-replica-set
+   56  kubectl describe replicaset 
+   57  kubectl scale replicaset new-replica-set --replicas=4
+   58  kubectl describe replicaset 
+   59  kubectl scale replicaset new-replica-set --replicas=5
+   60  kubectl describe replicaset 
+
+   kubectl rollout 
+   kubectl rollout undo
+   kubectl rollout history <deployment> --record
+
+
+terraform: 
+	commands:
+	  terraform init
+   	  terraform plan
+   	  terraform apply
+   	  terraform show
+   	  terraform state show <resource>.<name>
+   	lifecycle: 
+   		create_before_destroy  -> creates before destroying the resource
+   		prevent_destroy 	-> prevents destroying the resource while creating new(some issue)
+   		ignore_changes		-> ignore the changes made to file
+   	depends_on: define dependency on other resource
+   	tfstate: file that stores state of terraform in json format
+   	tfvars: variable file to hold the variables which can be refered in tf file
+   	tf: terraform config file
+   		resource:
+   		data: 
+   		output:
+   		reference variable/expression: -> applies to ouput and other resources. 
+   										  response from another resource can be made dependent
+   		count: number of items to be created, will create count times the defined reource
+   		for_each: 
+   			type = set(String)
+
+
+AWS:
+ IAM: Identity and Access Management
+
+
+ 20  kubectl get pods
+   21  kubectl describe pods redis
+   22  kubectl delete pod redis
+   23  vi pod-definition.yml
+   24  kubectl create -f pod-definition.yml 
+   25  kubectl describe pods redis
+   26  kubectl edit pod redis
+   27  kubectl get pods
+   28  kubectl describe pods redis
+
+
+In any of the practical quizzes if you are asked to edit an existing POD, please note the following:
+
+If you are given a pod definition file, edit that file and use it to create a new pod.
+If you are not given a pod definition file, you may extract the definition to a file using the below command:
+kubectl get pod <pod-name> -o yaml > pod-definition.yaml
+
+Then edit the file to make the necessary changes, delete and re-create the pod.
+
+Use the kubectl edit pod <pod-name> command to edit pod properties.
+
+replicaset definition file
+apps/v1
+replicaset
+spec:
+
+
+kubectl edit replicaset <name>
+
+kubectl scale --replicas=<num> replicaset(auto applied) <name>
+
+kubectl delete pods (applies the changes made to replicas)
