@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apiserver
+  labels:
+    app: apiserver
+    type: application
+spec:
+  replicas: 3
+  selector:
+    matchLabels: 
+      type: application
+  template:
+    metadata:
+      name: apiser
+      labels:
+        app: apiserver
+        type: application
+    spec:
+      containers:
+        - name: apiserver
+          image: nginx
