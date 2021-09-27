@@ -140,3 +140,174 @@ kubectl edit replicaset <name>
 kubectl scale --replicas=<num> replicaset(auto applied) <name>
 
 kubectl delete pods (applies the changes made to replicas)
+
+
+ 20  kubectl get pods
+   21  kubectl describe pods redis
+   22  kubectl delete pod redis
+   23  vi pod-definition.yml
+   24  kubectl create -f pod-definition.yml 
+   25  kubectl describe pods redis
+   26  kubectl edit pod redis
+   27  kubectl get pods
+   28  kubectl describe pods redis
+
+
+In any of the practical quizzes if you are asked to edit an existing POD, please note the following:
+
+If you are given a pod definition file, edit that file and use it to create a new pod.
+If you are not given a pod definition file, you may extract the definition to a file using the below command:
+kubectl get pod <pod-name> -o yaml > pod-definition.yaml
+
+Then edit the file to make the necessary changes, delete and re-create the pod.
+
+Use the kubectl edit pod <pod-name> command to edit pod properties.
+
+replicaset definition file
+apps/v1
+replicaset
+spec:
+
+
+kubectl edit replicaset <name>
+
+kubectl scale --replicas=<num> replicaset(auto applied) <name>
+
+kubectl delete pods (applies the changes made to replicas)
+
+
+
+
+root@controlplane:~# kubectl run nginx-pod --image=nginx:alpine --dry-run=client  -o yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: nginx-pod
+  name: nginx-pod
+spec:
+  containers:
+  - image: nginx:alpine
+    name: nginx-pod
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+
+
+----------------------------------
+
+root@controlplane:~# history
+    1  kubectl run nginx-pod --image=nginx:alpine --dry-run=client  -o yaml
+    2  kubectl run nginx-pod --image=nginx:alpine
+    3  kubectl run redis --image=redis:alpine -o yaml
+    4  kubectl get pods
+    5  kubectl delete pod redis
+    6  kubectl run redis --image=redis:alpine --dry-run=client -o yaml > redis.yaml
+    7  vi redis.yaml 
+    8  kubectl apply -f redis.yaml 
+    9  kubectl get pods
+   10  kubectl describe pod redis
+   11  kubectl edit redis
+   12  kubectl edit pod redis
+   13  kubectl describe pod redis
+   14  kubectl expose pod redis --port=6379 --name redis-service
+   15  kubectl create deployment webapp --image=kodekloud/webapp-color --replicas=3 --dry-run=client -o yaml > dep.yaml
+   16  vi dep.yaml 
+   17  kubectl apply -f dep.yaml 
+   18  kubectl get pods
+   19  kubectl create pod custom-nginx --image=nginx --port=8080
+   20  kubectl create --help
+   21  kubectl run custom-nginx --image=nginx --port=8080
+   22  kubectl get pods
+   23  kubectl describe pod custom-nginx
+   24  kubectl get pods
+   kubectl create deployment redis-deply --namespace=dev-ns --replicas=2 --image=redis --dry-run=client -o yaml > red-dep.yaml
+   29  vi red-dep.yaml 
+   30  kubectl apply -f red-dep.yaml 
+   31  kubectl get pods
+   32  kubectl get pods --namespace= dev-ns
+   33  kubectl get pods --namespace=dev-ns
+   34  kubectl get deployment
+   35  kubectl get deployment --namespace=dev-ns
+   36  kubectl get replicaset
+   37  kubectl get replicaset --namespace=dev-ns
+   38  kubectl edit redis-deply
+   39  kubectl edit redis-deply --namespace=dev-ns
+   40  kubectl edit deployment redis-deply --namespace=dev-ns
+   41  kubectl get deployment --namespace=dev-ns
+   42  vi red-dep.yaml 
+   43  kubectl apply -f red-dep.yaml 
+   44  kubectl get deployment --namespace=dev-ns
+   45  kubectl run httpd --image=httpd:alpine --dry-run=client -o yaml > httpd-pod.yaml
+   46  vi httpd-pod.yaml 
+   47  kubectl apply -f httpd-pod.yaml 
+   48  kubectl --help
+   49  kubectl expose httpd --port=80
+   50  kubectl get pods
+   51  kubectl expose --help
+   52  kubectl expose pod=httpd --port=80
+   53  kubectl expose pod httpd --port=80
+   54  history
+
+--------------------------------
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: redis-deply
+  name: redis-deply
+  namespace: dev-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: redis-deply
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: redis-deply
+    spec:
+      containers:
+      - image: redis
+        name: redis
+        resources: {}
+status: {}
+
+
+----------------------------------------
+
+PS C:\Users\sunil\OneDrive\Desktop\yakshayush\covid19india-react> kubectl scale --replicas=0  --help        
+Set a new size for a Deployment, ReplicaSet, Replication Controller, or StatefulSet.
+
+ Scale also allows users to specify one or more preconditions for the scale action.
+
+ If --current-replicas or --resource-version is specified, it is validated before the scale is attempted, and it is
+guaranteed that the precondition holds true when the scale is sent to the server.
+
+Examples:
+  # Scale a replicaset named 'foo' to 3.
+  kubectl scale --replicas=3 rs/foo
+
+  # Scale a resource identified by type and name specified in "foo.yaml" to 3.
+  kubectl scale --replicas=3 -f foo.yaml
+
+  # If the deployment named mysql's current size is 2, scale mysql to 3.
+  kubectl scale --current-replicas=2 --replicas=3 deployment/mysql
+
+  # Scale multiple replication controllers.
+  kubectl scale --replicas=5 rc/foo rc/bar rc/baz
+
+  # Scale statefulset named 'web' to 3.
+  kubectl scale --replicas=3 statefulset/web
+
+
+---------------------------------------------------------------------
+
+
