@@ -27,3 +27,8 @@ spec:
         limits:
           memory: "150Mi"
           cpu: "1"
+  tolerations: 
+    - key: "spray"
+      operator: "Equal"
+      value: "mortien"
+      effect: "NoSchedule"

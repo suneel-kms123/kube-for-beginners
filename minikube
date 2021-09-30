@@ -388,5 +388,12 @@ DB_Password:  11 bytes
 
 --------------------------------------------------------------------------
 
+anti affinity towards creating a pod on a particular node relates to node selector though nodeselector isn't as vast as antiaffinity in terms of operations and selections.
 
+label a node and use the label in anti Affinity section of deployment.spec 
+
+kubectl label node node01 color=blue
+
+
+---------------------------------------------------
 
