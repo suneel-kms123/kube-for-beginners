@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: apiserver
   labels:
-    app: apiserver
+    name: apiserver
     type: application
 spec:
   replicas: 3
@@ -12,7 +12,7 @@ spec:
       type: application
   template:
     metadata:
-      name: apiser
+      name: apiserver
       labels:
         app: apiserver
         type: application

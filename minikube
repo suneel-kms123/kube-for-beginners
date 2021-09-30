@@ -311,3 +311,82 @@ Examples:
 ---------------------------------------------------------------------
 
 
+vi kube-configMap.yaml
+   17  kubectl get configmaps
+   18  kubectl describe configmap webapp-config-map
+   19  kubectl create configmap webapp-config-map1 --from-literal=APP_COLOR_darkblue
+   20  kubectl create configmap webapp-config-map1 --from-literal=APP_COLOR=darkblue
+   21  kubectl describe configmap webapp-config-map1
+   22  kubectl edit configmap webapp-config-map
+   23  kubectl get configmaps
+   24  kubectl describe configmap webapp-config-map
+
+
+------------------------------------------------
+
+root@controlplane:~# history
+    1  kubectl get secrets
+    2  kubectl describe secrets default-token-bv8mx
+    3  kubectl get secrets
+    4  kubectl describe secret default-token-bv8mx
+    5  kubectl get pods
+    6  clear
+    7  kubectl create --help
+    8  kubectl create secret --help
+    9  kubectl create secret db-secret --help
+   10  kubectl create secret db-secret --from-literal=DB_HOST=sql01 --from-literal=DB_USER=root --from-literal=DB_PASSWORD=password123
+   11  kubectl create secret generic db-secret --from-literal=DB_HOST=sql01 --from-literal=DB_USER=root --from-literal=DB_PASSWORD=password123
+   12  kubectl get secrets
+   13  kubectl describe secret db-secret
+   14  kubectl edit secret db-secret
+   15  kubectl describe secret db-secret
+   16  kubectl edit secret db-secret
+   17  kubectl describe secret db-secret
+   18  ls
+   19  vi sample.yaml 
+   20  kubectl get pods
+   21  kubectl edit pod webapp-pod
+   22  vi sample.yaml 
+   23  kubectl create -f sample.yaml 
+   24  vi sample.yaml 
+   25  kubectl create -f sample.yaml 
+   26  vi sample.yaml 
+   27  kubectl create -f sample.yaml 
+   28  vi sample.yaml 
+   29  kubectl create -f sample.yaml 
+   30  vi sample.yaml 
+   31  kubectl get pods
+   32  kubectl delete pod webapp-pod
+   33  kubectl create -f sample.yaml 
+   34  clear
+   35  kubectl get pods
+
+---------------------------------------------------------------------------
+
+root@controlplane:~# kubectl get secrets
+NAME                  TYPE                                  DATA   AGE
+db-secret             Opaque                                3      20m
+default-token-bv8mx   kubernetes.io/service-account-token   3      32m
+
+
+-----------------------------------------------------------------------------
+
+root@controlplane:~# kubectl describe secret db-secret
+Name:         db-secret
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+
+Type:  Opaque
+
+Data
+====
+DB_User:      4 bytes
+DB_Host:      5 bytes
+DB_Password:  11 bytes
+
+
+--------------------------------------------------------------------------
+
+
+
