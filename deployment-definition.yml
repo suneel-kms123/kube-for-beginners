@@ -20,3 +20,12 @@ spec:
       containers:
         - name: apiserver
           image: nginx
+      affinity: 
+        nodeaffinity: 
+          requiredDuringSchedulingIgnoredDuringExecution: 
+            nodeSelectorTerms:
+              matchExpressions:
+                key: color
+                operator: In
+                value: 
+                  - blue
