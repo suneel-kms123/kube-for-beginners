@@ -388,5 +388,66 @@ DB_Password:  11 bytes
 
 --------------------------------------------------------------------------
 
+anti affinity towards creating a pod on a particular node relates to node selector though nodeselector isn't as vast as antiaffinity in terms of operations and selections.
+
+label a node and use the label in anti Affinity section of deployment.spec 
+
+kubectl label node node01 color=blue
 
 
+---------------------------------------------------
+
+readiness probbe srcipt 
+
+for i in {1..20}; do
+   kubectl exec --namespace=kube-public curl -- sh -c 'test=`wget -qO- -T 2  http://webapp-service.default.svc.cluster.local:8080/ready 2>&1` && echo "$test OK" || echo "Failed"';
+   echo ""
+
+--------------------------------------------------------------
+
+git clone https://github.com/kodekloudhub/kubernetes-metrics-server.git
+
+
+-------------------------------------------
+
+kubectl create deployment nginx --image=nginx
+kubectl rollout restart nginx
+kubectl rollout history deployment nginx
+kubectl rollout undo deployment nginx
+kubectl edit deployment nginx --record
+kubectl set image deployment nginx nginx=nginx1:17 --record
+  |-> 
+    deployment.extensions/nginx image updated
+    master $master $
+
+    master $ kubectl rollout history deployment nginx
+    deployment.extensions/nginx
+
+    REVISION CHANGE-CAUSE
+    1     <none>
+    2     kubectl set image deployment nginx nginx=nginx:1.17 --record=true
+    master $
+
+
+  ----------------------------------helm------------------------------------------------
+
+
+   1 mkdir charts
+   2 cd .\charts\
+   3 helm create example
+   5 cd .\example\
+   9 helm install
+  10 helm install .\templates\deployment.yaml
+  11 helm install .\templates\deployment.yaml --generate-name
+  12 helm install test . --dry-run
+  13 minikube.exe start
+  14 helm install test . --dry-run
+  15 helm install test .
+  16 kubectl get pods
+  17 kubectl get pods
+  18 kubectl get pods
+  19 kubectl get pods
+  20 kubectl get deployments
+  21 helm list -aq
+  22 helm delete test
+  23 kubectl get deployments
