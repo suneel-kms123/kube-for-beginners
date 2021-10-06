@@ -1,0 +1,29 @@
+#using cconfig maps
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-color
+  labels:
+    name: webapp-color
+spec:
+  containers:
+    - name: webapp-color
+      image: kodekloud/webapp-color
+      env:
+        - name: APP_COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: webapp-config-map
+              key: APP_COLOR
+        - name: APP_COLOR_2
+          valueFrom:
+            secretKeyRef:
+              key: APP_COLOR_2
+              name: webapp-config-secret
+      resources:
+        requests: 
+          memory: "150Mi"
+          cpu: "1"
+        limits:
+          memory: "150Mi"
+          cpu: "1"

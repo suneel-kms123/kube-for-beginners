@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+  name: ingress-wear-watch
+spec:
+  rules:
+    - http:
+        paths: 
+          - backend: 
+              path: /eat
+              service: 
+                name: ingress-wear-watch
+                port: 
+                  number: 8080
