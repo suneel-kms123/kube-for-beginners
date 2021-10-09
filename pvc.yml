@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: PersistentVolume #storage hub
+metadata:
+  name: my-pv
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  hostPath:
+    path:  /tmp # not intended in prod
+
+--- 
+
+apiVersion: v1
+kind: PersistentVolumeClaim #claim from the storage hub
+metadata:
+  name: my-pvc
+spec:
+  resources:
+    requests:
+      storage: 500Mi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+
+--- 
+
+kind:apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    name: myapp-pod
+spec:
+  volumes:
+    - name: my-pvc
+      persistentVolumeClaim:
+        claimName: my-pvc
+  containers:
+  - name: myapp
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: 8080

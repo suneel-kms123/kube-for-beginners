@@ -1,0 +1,4 @@
+apiVersion: V1
+kind: PersistantVolume
+metadata:
+  name: my-pv

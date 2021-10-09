@@ -451,3 +451,46 @@ kubectl set image deployment nginx nginx=nginx1:17 --record
   21 helm list -aq
   22 helm delete test
   23 kubectl get deployments
+
+
+   docker build --help
+   18  docker build . webapp-color
+   19  ls
+   20  docker build webapp-color .
+   21  docker build webapp-color Dockerfile 
+   22  docker build -t . webapp-color .
+   23  docker build -t webapp-color .
+   24  docker run webapp-color 8080:8282
+   25  docker run --help
+   26  docker run webapp-color -p 8080:8282
+   27  docker run webapp-color -p 8282:8080
+   28  docker run -p 8282:8080 webapp-color
+   29  docker images
+   30  docker --help
+   31  docker config python:3.6
+   32  docker config ls python:3.6
+   33  docker config python:3.6 ls
+   34  docker config python:3.6 inspect
+   35  clear
+   36  docker ps
+   37  docker containers
+   38  docker container ls
+   39  docker images
+   40  docker inspect python:3.6
+   41  docker run python:3.6
+   42  docker ps
+   43  docker containers
+   44  docker container
+   45  docker container ls
+   46  clear
+   47  docker inspect python:3.6
+   48  docker run python:3.6 cat /etc/release
+   49  docker run python:3.6 cat /etc/*release*
+   50  docker images
+   51  vi Dockerfile 
+   52  docker rm image webapp-color
+   53  docker rm --help
+   54  docker build -t . webapp-color:lite
+   55  docker build -t webapp-color:lite .
+   56  docker images
+   57  history
