@@ -494,3 +494,12 @@ kubectl set image deployment nginx nginx=nginx1:17 --record
    55  docker build -t webapp-color:lite .
    56  docker images
    57  history
+
+
+
+   ------------------------------------------
+
+   kubectl get pod nginx -o jsonpath='{.spec.containers[].image}' -n=mynamespace
+
+   kubectl run nginx --image=nginx:1.7.1 --port=8080 --dry-run=client --command "sleep 3600" -o yaml > o.yaml
+   kubectl run hello --image=busybox --restart=Never -- echo hello world -o yaml > o.yaml
