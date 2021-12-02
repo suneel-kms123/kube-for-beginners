@@ -503,3 +503,48 @@ kubectl set image deployment nginx nginx=nginx1:17 --record
 
    kubectl run nginx --image=nginx:1.7.1 --port=8080 --dry-run=client --command "sleep 3600" -o yaml > o.yaml
    kubectl run hello --image=busybox --restart=Never -- echo hello world -o yaml > o.yaml
+
+--------------------------------------------------------*******----------------------------------------------------------------
+kubectl.exe get deployments
+  11 kubectl.exe rollout history
+  12 kubectl.exe rollout history deployment/nginx-deploy
+  13 kubectl.exe set image deployment/nginx-deploy --image=nginx1.17
+  14 kubectl.exe set image deployment/nginx-deploy --help
+  15 kubectl.exe set image deployment/nginx-deploy nginx=nginx1.17
+  16 kubectl.exe rollout history deployment/nginx-deploy
+  17 kubectl.exe get deployments
+  24 kubectl.exe get deployments
+  25 kubectl.exe rollout history deployment/nginx-deploy
+  26 kubectl.exe get deployments
+  27 kubectl.exe describe deployment nginx-deploy
+  28 kubectl.exe describe deployment nginx-deploy
+  29 kubectl.exe get deployments
+  30 kubectl rollout history
+  31 kubectl rollout history deployment/nginx-deploy
+  32 kubectl rollout history
+  33 kubectl.exe get deployments
+  34 kubectl.exe get deployments
+  35 kubectl.exe get deployments
+  36 kubectl.exe get deployments
+  37 kubectl.exe get pods
+  38 kubectl.exe set image deployment/nginx-deploy nginx=nginx:1.17
+  39 kubectl.exe get pods
+  40 kubectl.exe get pods
+  41 kubectl.exe get pods
+  42 kubectl.exe get deployments
+  43 kubectl.exe get deployments
+  44 kubectl rollout history
+  45 kubectl rollout history deployment/nginx-deploy
+  46 #kubectl rollout undo deployment/nginx-deploy -to-revision
+  47 kubectl get pods
+  48 kubectl get deployments
+  49 kubectl get deployments | grep image
+  50 kubectl describe deployment nginx-deploy | grep image
+  51 kubectl describe deployment nginx-deploy
+  52 kubectl rollout undo deployment/nginx-deploy -to-revision=1
+  53 kubectl rollout undo deployment/nginx-deploy --to-revision=1
+  54 kubectl describe deployment nginx-deploy
+  55 kubectl get pods
+  56 kubectl get pods
+  57 kubectl get pods
+  58 kubectl describe deployment nginx-deploy
